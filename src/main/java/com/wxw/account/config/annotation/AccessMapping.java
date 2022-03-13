@@ -19,5 +19,4 @@ public @interface AccessMapping {
 
     @AliasFor(annotation = RequestMapping.class)
     String[] value() default {};
-
 }
