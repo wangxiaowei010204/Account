@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wxw.account.repository.AccountRepository">
+
+    <select id="getAccountByMobile" resultType="com.wxw.account.dto.account.Account">
+        SELECT
+            FID AS accountID,
+            FPrettyID AS prettyID,
+            fName AS name,
+            fImgUrl AS imgUrl,
+            fSex AS sexEnum,
+            fpassWord AS passWord
+        FROM
+            t_account
+        WHERE
+            FArea = #{area} AND FMobile =#{mobile}
+    </select>
+
+    <update id="setPwdByMobile">
+        UPDATE t_account
+        SET FPASSWORD = #{passWord} WHERE fid=#{accountID}
+
+    </update>
+
+</mapper>
