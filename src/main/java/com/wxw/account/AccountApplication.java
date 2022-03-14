@@ -7,11 +7,15 @@ import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.SpringVersion;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
 @SpringBootApplication
 @EnableAsync
 @MapperScan("com.wxw.account.repository")
 @Slf4j
+@EnableOpenApi
+@EnableWebMvc
 public class AccountApplication {
 
     public static void main(String[] args) {

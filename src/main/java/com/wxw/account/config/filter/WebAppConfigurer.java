@@ -2,7 +2,9 @@ package com.wxw.account.config.filter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 public class WebAppConfigurer implements WebMvcConfigurer {
@@ -18,6 +20,11 @@ public class WebAppConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         WebMvcConfigurer.super.addInterceptors(registry);
         registry.addInterceptor(new CustomInterceptor()).addPathPatterns("/**");//拦截所有请求
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.viewResolver(new InternalResourceViewResolver());
     }
 
 }

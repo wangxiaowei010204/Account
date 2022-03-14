@@ -33,6 +33,10 @@ public class CustomInterceptor implements HandlerInterceptor {
             throws Exception {
         log.info("CustomInterceptor ==> preHandle method: do request before");
 
+        if (request.getRequestURI().contains("/swagger-") || request.getRequestURI().contains("/api-docs")) {
+            return true;
+        }
+
         String nonce = request.getHeader("nonce");
         if (nonce == null || nonce.isEmpty() || !nonce.equals(nonce)) {
             throw new LogicException("nonce 非法!", ResultEnum.NONCE_IS_NULL);
