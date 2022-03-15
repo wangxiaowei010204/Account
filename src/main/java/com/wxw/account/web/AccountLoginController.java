@@ -15,6 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,7 +35,7 @@ public class AccountLoginController {
      */
     @PostMapping("loginByMobile")
     @ApiOperation(value = "手机号登录", notes = "通过手机号来登录")
-    public Result loginByMobile(LoginByMobileCommand loginByMobileCommand) throws Exception {
+    public Result loginByMobile(@RequestBody LoginByMobileCommand loginByMobileCommand) throws Exception {
 
         AccountDto result = accountService.loginByMobile(loginByMobileCommand);
 
@@ -46,7 +47,7 @@ public class AccountLoginController {
      */
     @PostMapping("setPwdByMobile")
     @ApiOperation(value = "手机号修改密码", notes = "根据手机号修改密码")
-    public Result setPwdByMobile(SetPwdByMobileCommand setPwdByMobileCommand) throws LogicException {
+    public Result setPwdByMobile(@RequestBody SetPwdByMobileCommand setPwdByMobileCommand) throws LogicException {
 
         boolean result = accountService.setPwdByMobile(setPwdByMobileCommand);
 
@@ -58,10 +59,9 @@ public class AccountLoginController {
      */
     @AccessMapping("getUserInfo")
     public Result getUserInfo() {
-      
-        AccountDto result = accountService.getUserInfo();
 
-        return ResultUtil.success(1);
+        AccountDto result = accountService.getUserInfo();
+        return ResultUtil.success(result);
     }
 
 }

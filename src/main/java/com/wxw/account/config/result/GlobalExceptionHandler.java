@@ -1,8 +1,5 @@
 package com.wxw.account.config.result;
 
-import com.wxw.account.config.result.Result;
-import com.wxw.account.config.result.ResultEnum;
-import com.wxw.account.config.result.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.ControllerAdvice;
